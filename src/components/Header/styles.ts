@@ -40,7 +40,8 @@ export const Container = styled.header`
             
             li{
                 display: flex;
-                margin-right: 20px;
+                margin-right: 40px;
+                transition:  ease-in filter .3s;
 
                 svg{
                     font-size: 2.5rem;

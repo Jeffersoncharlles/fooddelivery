@@ -1,7 +1,7 @@
 import { BiStore } from 'react-icons/bi';
 import { BiUser } from 'react-icons/bi';
 import { MdOutlineDeliveryDining } from 'react-icons/md';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Logo from '../../assets/Icon.svg'
 import {
     Container,
@@ -9,6 +9,7 @@ import {
 
 
 export const Header = () => {
+    const { pathname } = useLocation()
 
     return (
         <Container>
@@ -21,13 +22,13 @@ export const Header = () => {
                 />
                 <ul>
                     <li>
-                        <Link to="/"><BiStore /></Link>
+                        <Link to="/" aria-label='home'><BiStore /></Link>
                     </li>
                     <li>
-                        <Link to="/orders"><MdOutlineDeliveryDining /></Link>
+                        <Link to="/orders" aria-label='orders'><MdOutlineDeliveryDining /></Link>
                     </li>
                     <li>
-                        <Link to="/profile"><BiUser /></Link>
+                        <Link to="/profile" aria-label='profile'><BiUser /></Link>
                     </li>
                 </ul>
             </nav>
