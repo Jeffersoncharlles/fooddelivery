@@ -19,6 +19,11 @@ export const Container = styled.header`
             height: 3.5rem;
             box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             border-radius: 60px;
+            cursor: pointer;
+
+            &:focus{
+                cursor: text;
+            }
             
         }
 

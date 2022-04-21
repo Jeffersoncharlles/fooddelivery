@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { BrowserRouter } from "react-router-dom"
 import { ThemeProvider } from "styled-components"
 import { Cart } from "./components/Cart"
@@ -9,6 +10,7 @@ import dark from "./style/theme/dark"
 import light from "./style/theme/light"
 
 function App() {
+  const [search, setSearch] = useState('')
 
   return (
     <ThemeProvider theme={light}>
@@ -16,10 +18,9 @@ function App() {
       <BrowserRouter>
         <Container>
           <div>
-            <Header />
+            <Header search={search} onSearch={setSearch} />
           </div>
           <Body>
-            ...
             <Routers />
           </Body>
           <Cart />

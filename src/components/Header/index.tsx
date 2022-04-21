@@ -7,8 +7,12 @@ import {
     Container,
 } from './styles';
 
+interface IHeader {
+    search: string;
+    onSearch: React.Dispatch<React.SetStateAction<string>>
+}
 
-export const Header = () => {
+export const Header = ({ search, onSearch }: IHeader) => {
     const { pathname } = useLocation()
 
     return (
@@ -18,7 +22,8 @@ export const Header = () => {
                 <input
                     type="text"
                     placeholder='Search'
-
+                    value={search}
+                    onChange={e => onSearch(e.target.value)}
                 />
                 <ul>
                     <li>

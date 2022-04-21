@@ -20,4 +20,6 @@ export const Body = styled.section`
     display: flex;
     background: ${({ theme }) => theme.color.primary2};
     flex: 1;
+    padding: 15px;
+    
 `;

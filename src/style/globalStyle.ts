@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         width: 100%;
-        font: 400 1rem 'Roboto', Arial, Helvetica, sans-serif;
+        font: 400 1rem 'Inter', Arial, Helvetica, sans-serif;
         background: ${({ theme }) => theme.color.tertiary};
         color: ${({ theme }) => theme.color.white};
         -webkit-font-smoothing: antialiased; //detalhes de font webkit

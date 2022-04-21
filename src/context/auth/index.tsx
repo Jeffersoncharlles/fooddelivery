@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { api } from "../../services/api";
 import { IAuthProviderProps, User, IAuthContext } from "./types";
 
 
@@ -18,9 +19,21 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
 
     }
 
-    const Session = async () => {
+    const Session = async (email: string, password: string) => {
         try {
+            const { data } = await api.post('/api/login', { email, password })
+            if (data) {
+                setUser(data)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
+    const SignUp = async (email: string, password: string, name: string) => {
+        try {
+            const { data } = await api.post('/api/login', { name, email, password })
+            console.log(data)
         } catch (error) {
             console.log(error)
         }
