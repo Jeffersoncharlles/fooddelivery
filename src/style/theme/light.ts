@@ -4,7 +4,7 @@ export default {
         primary: '#DCDCDC',
         primary2: '#ff723a',
         secondary: '#FFFF',
-        secondary2: '#ff9142',
+        secondary2: '#ce4912',
         tertiary: '#F5f5f5',
 
         white: '#000',
