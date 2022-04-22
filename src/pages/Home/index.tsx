@@ -13,6 +13,7 @@ import {
 } from './styles';
 import { useStore } from '../../context/store';
 import { CardProducts } from '../../components/CardProducts';
+import { Modal } from '../../components/Modal';
 export interface ICategories {
     id: number;
     name: string;
@@ -28,8 +29,20 @@ const everyCategories = {
 
 
 export const Home = () => {
-    const { ListProducts, products, totalPages, currentPage, setCurrentPage, activeSearch, activeCategory, setActiveCategory } = useStore();
+    const {
+        isLoading,
+        ListProducts,
+        products,
+        totalPages,
+        currentPage,
+        setCurrentPage,
+        activeSearch,
+        activeCategory,
+        setActiveCategory
+    } = useStore();
+
     const [categories, setCategories] = useState<ICategories[]>([])
+    const [modalStatus, setModalStatus] = useState<boolean>(true)
 
 
     useEffect(() => {
@@ -49,7 +62,12 @@ export const Home = () => {
         })()
     }, [activeCategory, currentPage, activeSearch])
 
+    if (isLoading) {
+        return (
 
+            <div></div>
+        )
+    }
 
     return (
         <Container>
@@ -88,6 +106,9 @@ export const Home = () => {
                         ))}
                 </ProductPagination>
             )}
+            <Modal active={modalStatus} setActive={setModalStatus}>
+                conteúdo modal
+            </Modal>
         </Container>
     );
 }

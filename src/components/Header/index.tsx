@@ -18,7 +18,9 @@ export const Header = ({ search, onSearch }: IHeader) => {
     return (
         <Container>
             <nav>
-                <div><img src={Logo} alt="Burger" /><strong>FoodDelivery</strong></div>
+                <Link to='/'>
+                    <div><img src={Logo} alt="Burger" /><strong>FoodDelivery</strong></div>
+                </Link>
                 <input
                     type="text"
                     placeholder='Search'

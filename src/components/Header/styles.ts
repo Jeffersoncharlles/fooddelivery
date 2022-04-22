@@ -27,14 +27,18 @@ export const Container = styled.header`
             
         }
 
-        div{
+        > a {
+            text-decoration: none;
+            > div{
             display: flex;
             align-items: center;
+            cursor: pointer;
             strong{
                 font-size: 1.5rem;
                 margin-left: 10px;
                 color: ${({ theme }) => theme.color.primary2};
             }
+        }
         }
 
         ul{
