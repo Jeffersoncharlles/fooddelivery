@@ -4,7 +4,7 @@ export const Container = styled.header`
     display: flex;
     background: ${({ theme }) => theme.color.tertiary};
     height: 80px;
-    width: 1170px;
+    width: 1440px;
 
     nav{
         flex: 1;

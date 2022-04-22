@@ -12,12 +12,23 @@ interface ICategory {
 
     }
     active: number;
+    setActive: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const CategoryItem = ({ data, active }: ICategory) => {
+export const CategoryItem = ({ data, active, setActive }: ICategory) => {
+
+    const handleClick = () => {
+        setActive(data.id)
+    }
 
     return (
-        <Container active={active} ids={data.id}>
+        <Container
+            active={active}
+            ids={data.id}
+            onClick={handleClick}
+            data-tip={data.name}
+            data-for="tip-top"
+        >
             {data.name === 'Todas Categories' && (
                 <GiNotebook />
             )}

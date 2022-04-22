@@ -15,11 +15,12 @@ export const GlobalStyle = createGlobalStyle`
     body{
         width: 100%;
         font: 400 1rem 'Inter', Arial, Helvetica, sans-serif;
-        background: ${({ theme }) => theme.color.tertiary};
+        background: ${({ theme }) => theme.color.primary2};
         color: ${({ theme }) => theme.color.white};
         -webkit-font-smoothing: antialiased; //detalhes de font webkit
         -moz-osx-font-smoothing: grayscale !important;
         text-rendering: optimizeLegibility !important;
+        overflow-y: hidden;//nao tem rolagem vertical
         
     }
 

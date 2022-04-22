@@ -6,6 +6,7 @@ import { Header } from "./components/Header"
 import { Routers } from "./routers"
 import { Container, Body } from "./style"
 import { GlobalStyle } from "./style/globalStyle"
+import ReactTooltip from "react-tooltip"
 import dark from "./style/theme/dark"
 import light from "./style/theme/light"
 
@@ -21,9 +22,13 @@ function App() {
             <Header search={search} onSearch={setSearch} />
           </div>
           <Body>
-            <Routers />
+            <div>
+              <Routers />
+            </div>
           </Body>
           <Cart />
+          <ReactTooltip id="tip-top" place="top" effect="solid" />
+          <ReactTooltip id="tip-button" place="bottom" effect="solid" />
         </Container>
       </BrowserRouter>
     </ThemeProvider>

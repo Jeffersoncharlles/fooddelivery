@@ -21,5 +21,12 @@ export const Body = styled.section`
     background: ${({ theme }) => theme.color.primary2};
     flex: 1;
     padding: 15px;
+    overflow-y: auto;//ativar o scroll so aqui
     
+
+    > div{
+        display: flex;
+        width: 1440px;
+        margin:  0 auto;
+    }
 `;

@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { ICategories, IStoreChildren, IStoreContext } from "./types";
+import { ICategories, IProducts, IStoreChildren, IStoreContext } from "./types";
+import ReactTooltip from "react-tooltip";
 
 
 
@@ -9,8 +10,8 @@ const StoreContext = createContext<IStoreContext>({} as IStoreContext)
 
 
 export const StoreProvider = ({ children }: IStoreChildren) => {
-    const [product, setProduct] = useState()
-    const [categories, setCategories] = useState<ICategories>()
+    const [products, setProducts] = useState<IProducts[]>([])
+    const [categories, setCategories] = useState<ICategories[]>([])
     const [isLoading, setIsLoading] = useState(true)
 
     // useEffect(() => {
@@ -20,8 +21,9 @@ export const StoreProvider = ({ children }: IStoreChildren) => {
     const CategoriesAll = async () => {
         try {
             // const { data } = await api.get('/categories')
-            // if (data) {
-            //     setCategories(data)
+            // if (data.error === '') {
+            //     setCategories(data.result)
+            //     ReactTooltip.rebuild()
             //     console.log(categories)
             // }
         } catch (error) {
@@ -29,19 +31,24 @@ export const StoreProvider = ({ children }: IStoreChildren) => {
         }
     }
 
-    const Session = async () => {
+    const ListProducts = async () => {
         try {
+            const { data } = await api.get('/products')
+            // console.log(data.result.data)
+            if (data.error === '') {
+                setProducts(data.result.data)
+            }
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
     return (
         <StoreContext.Provider
             value={{
-                categories, CategoriesAll
-
+                categories, products,
+                ListProducts
             }}>
             {children}
         </StoreContext.Provider>

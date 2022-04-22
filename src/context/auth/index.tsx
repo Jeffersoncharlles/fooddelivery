@@ -26,16 +26,16 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
                 setUser(data)
             }
         } catch (error) {
-            console.log(error)
+            //console.log(error)
         }
     }
 
     const SignUp = async (email: string, password: string, name: string) => {
         try {
             const { data } = await api.post('/api/login', { name, email, password })
-            console.log(data)
+            //console.log(data)
         } catch (error) {
-            console.log(error)
+            //console.log(error)
         }
     }
 

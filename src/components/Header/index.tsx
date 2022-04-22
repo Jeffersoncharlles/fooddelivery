@@ -27,13 +27,13 @@ export const Header = ({ search, onSearch }: IHeader) => {
                 />
                 <ul>
                     <li>
-                        <Link to="/" aria-label='home'><BiStore /></Link>
+                        <Link to="/" aria-label='home' data-tip="Home" data-for="tip-button"><BiStore /></Link>
                     </li>
                     <li>
-                        <Link to="/orders" aria-label='orders'><MdOutlineDeliveryDining /></Link>
+                        <Link to="/orders" aria-label='orders' data-tip="Orders" data-for="tip-button" ><MdOutlineDeliveryDining /></Link>
                     </li>
                     <li>
-                        <Link to="/profile" aria-label='profile'><BiUser /></Link>
+                        <Link to="/profile" aria-label='profile' data-tip="Profile" data-for="tip-button"><BiUser /></Link>
                     </li>
                 </ul>
             </nav>

@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
 
 export interface IStoreContext {
-    categories: ICategories | undefined
-    CategoriesAll: () => Promise<void>
+    categories: ICategories[]
+    products: IProducts[]
+    ListProducts: () => Promise<void>
 }
 
 export interface IStoreChildren {
@@ -10,10 +11,17 @@ export interface IStoreChildren {
 }
 
 export interface ICategories {
-    error: string;
-    result: {
-        id: number;
-        name: string;
-        image: string;
-    }[]
+    id: number;
+    name: string;
+    image: string;
+}
+
+export interface IProducts {
+    id: number;
+    id_cat: number;
+    name: string;
+    image: string;
+    price: number;
+    ingredients: string;
+    points: number;
 }

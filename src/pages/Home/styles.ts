@@ -9,9 +9,19 @@ export const Container = styled.div`
 
 export const Category = styled.div`
     font-size: 2rem;
+    
 `;
 export const CategoryList = styled.div`
     display:flex;
     margin-top: 10px;
+
+`;
+
+export const Product = styled.div`
+
+
+`;
+export const ProductList = styled.div`
+
 
 `;
