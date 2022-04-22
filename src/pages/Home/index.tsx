@@ -28,9 +28,9 @@ const everyCategories = {
 
 
 export const Home = () => {
-    const { ListProducts, products, totalPages, currentPage, setCurrentPage, activeSearch } = useStore();
+    const { ListProducts, products, totalPages, currentPage, setCurrentPage, activeSearch, activeCategory, setActiveCategory } = useStore();
     const [categories, setCategories] = useState<ICategories[]>([])
-    const [activeCategory, setActiveCategory] = useState(0)
+
 
     useEffect(() => {
         (async () => {
@@ -45,7 +45,7 @@ export const Home = () => {
 
     useEffect(() => {
         (async () => {
-            await ListProducts()
+            await ListProducts({ activeSearch, currentPage, activeCategory })
         })()
     }, [activeCategory, currentPage, activeSearch])
 

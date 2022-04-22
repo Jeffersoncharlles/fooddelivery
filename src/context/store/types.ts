@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 export interface IStoreContext {
     categories: ICategories[];
     products: IProducts[];
-    ListProducts: () => Promise<void>;
+    ListProducts: ({ activeSearch, currentPage }: IList) => Promise<void>;
     isLoading: boolean;
     totalPages: number;
     currentPage: number;
@@ -11,6 +11,14 @@ export interface IStoreContext {
     setSearch: React.Dispatch<React.SetStateAction<string>>
     search: string;
     activeSearch: string;
+    activeCategory: number;
+    setActiveCategory: React.Dispatch<React.SetStateAction<number>>
+}
+
+export interface IList {
+    activeSearch?: string;
+    currentPage?: number;
+    activeCategory?: number;
 }
 
 export interface IStoreChildren {

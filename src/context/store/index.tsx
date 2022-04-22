@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { ICategories, IProducts, IStoreChildren, IStoreContext } from "./types";
+import { ICategories, IList, IProducts, IStoreChildren, IStoreContext } from "./types";
 import ReactTooltip from "react-tooltip";
 
 
@@ -14,9 +14,11 @@ export const StoreProvider = ({ children }: IStoreChildren) => {
     const [categories, setCategories] = useState<ICategories[]>([])
     const [isLoading, setIsLoading] = useState(true)
     const [totalPages, setTotalPages] = useState(0)
-    const [currentPage, setCurrentPage] = useState(0)
     const [search, setSearch] = useState('')
+
     const [activeSearch, setActiveSearch] = useState('')
+    const [activeCategory, setActiveCategory] = useState(0)
+    const [currentPage, setCurrentPage] = useState(0)
 
     // useEffect(() => {
     //     CategoriesAll()
@@ -45,9 +47,17 @@ export const StoreProvider = ({ children }: IStoreChildren) => {
         }
     }
 
-    const ListProducts = async () => {
+    const ListProducts = async ({ activeSearch, currentPage, activeCategory }: IList) => {
         try {
-            const { data } = await api.get('/products')
+            const query = {
+                params: {
+                    search: activeSearch,
+                    page: currentPage,
+                    category: activeCategory
+                }
+            }
+
+            const { data } = await api.get(`/products`, query)
             if (data.error === '') {
                 setProducts(data.result.data)
                 setTotalPages(data.result.total)
@@ -63,8 +73,8 @@ export const StoreProvider = ({ children }: IStoreChildren) => {
     return (
         <StoreContext.Provider
             value={{
-                isLoading, categories, products, currentPage, totalPages, search, activeSearch,
-                setCurrentPage, setSearch, ListProducts
+                isLoading, categories, products, currentPage, totalPages, search, activeSearch, activeCategory,
+                setCurrentPage, setActiveCategory, setSearch, ListProducts
             }}>
             {children}
         </StoreContext.Provider>
