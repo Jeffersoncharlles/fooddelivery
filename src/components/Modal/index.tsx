@@ -7,14 +7,14 @@ import {
 interface IModal {
     children: any;
     active?: boolean;
-    setActive: React.Dispatch<React.SetStateAction<boolean>>;
+    close: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Modal = ({ children, setActive, active = false }: IModal) => {
+export const Modal = ({ children, close, active = false }: IModal) => {
 
 
     const handleModalClick = (e: any) => {
-        e.target.classList.contains('bgModal') ? setActive(false) : ''
+        e.target.classList.contains('bgModal') ? close(false) : ''
     }
 
     return (

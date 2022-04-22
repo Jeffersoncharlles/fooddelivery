@@ -31,7 +31,7 @@ export const ProductList = styled.div`
 export const ProductPagination = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 30px;
 `;
 
 interface IPageProps {

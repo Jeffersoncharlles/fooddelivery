@@ -4,7 +4,7 @@ interface IModal {
     active: boolean
 }
 
-export const Container = styled.div<IModal>`
+export const Container = styled.main<IModal>`
     position: fixed;
     left: 0;//pegar tudo da tela
     top: 0;//pegar tudo da tela
@@ -24,7 +24,7 @@ export const Container = styled.div<IModal>`
     align-items: center;
 `;
 
-export const Body = styled.main`
+export const Body = styled.section`
     /* width: 300px;
     height: 300px; */
     padding: 20px;
@@ -33,7 +33,7 @@ export const Body = styled.main`
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
     max-height: 90vh;
     overflow: auto;//se o conteúdo passar colocar rolagem
-    max-width: 100vh;
+    max-width: 100vw;
 `;
 export const Header = styled.header`
 

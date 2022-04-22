@@ -14,6 +14,7 @@ import {
 import { useStore } from '../../context/store';
 import { CardProducts } from '../../components/CardProducts';
 import { Modal } from '../../components/Modal';
+import { ProductItem } from '../../components/ProductItem/indext';
 export interface ICategories {
     id: number;
     name: string;
@@ -106,8 +107,11 @@ export const Home = () => {
                         ))}
                 </ProductPagination>
             )}
-            <Modal active={modalStatus} setActive={setModalStatus}>
-                conteúdo modal
+            <Modal active={modalStatus} close={setModalStatus}>
+                <ProductItem
+
+
+                />
             </Modal>
         </Container>
     );
