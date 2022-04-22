@@ -40,7 +40,9 @@ export const Home = () => {
     }, [])
 
     useEffect(() => {
-        ListProducts()
+        (async () => {
+            await ListProducts()
+        })()
     }, [activeCategory])
 
     return (
