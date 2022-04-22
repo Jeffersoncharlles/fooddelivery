@@ -8,24 +8,30 @@ import {
 import { MdOutlineOpenInFull } from 'react-icons/md'
 import { PriceFormatted } from '../../utils/formatted';
 
-interface Card {
-    data: {
-        id: number;
-        id_cat: number;
-        name: string;
-        image: string;
-        price: number;
-        ingredients: string;
-        points: number;
-    }
+interface Product {
+    id: number;
+    id_cat: number;
+    name: string;
+    image: string;
+    price: number;
+    ingredients: string;
+    points: number;
 }
 
-export const CardProducts = ({ data }: Card) => {
+interface Card {
+    onClick: (data: Product) => void;
+    data: Product
+}
+
+export const CardProducts = ({ data, onClick }: Card) => {
 
 
+    const handleClick = () => {
+        onClick(data)
+    }
 
     return (
-        <Container>
+        <Container onClick={handleClick}>
             <ProductImage>
                 <img src={data.image} alt={data.name} />
             </ProductImage>

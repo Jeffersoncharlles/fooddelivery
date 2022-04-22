@@ -43,7 +43,8 @@ export const Home = () => {
     } = useStore();
 
     const [categories, setCategories] = useState<ICategories[]>([])
-    const [modalStatus, setModalStatus] = useState<boolean>(true)
+    const [modalStatus, setModalStatus] = useState<boolean>(false)
+    const [modalData, setModalData] = useState({} as any)
 
 
     useEffect(() => {
@@ -70,6 +71,11 @@ export const Home = () => {
         )
     }
 
+    const handleProductClick = (data: any) => {
+        setModalData(data);
+        setModalStatus(true)
+    }
+
     return (
         <Container>
             {categories.length > 0 && (
@@ -87,7 +93,12 @@ export const Home = () => {
                 <Product>
                     <ProductList>
                         {products.map((item) => (
-                            <CardProducts key={String(item.id)} data={item} />
+                            <CardProducts
+                                key={String(item.id)}
+                                data={item}
+                                onClick={handleProductClick}
+                            //vou pegar os dados que clicou e passar para handleProductCLick
+                            />
                         ))}
                     </ProductList>
                 </Product>
@@ -109,8 +120,8 @@ export const Home = () => {
             )}
             <Modal active={modalStatus} close={setModalStatus}>
                 <ProductItem
-
-
+                    // passando as info para ca
+                    data={modalData}
                 />
             </Modal>
         </Container>

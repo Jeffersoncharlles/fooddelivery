@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 47rem;//752px
+    color:${({ theme }) => theme.color.white};
 `;
 
 export const ProductBody = styled.div`
-    height: 100px;
-    background: red;
+    height: 200px;
     display: flex;
 
     img{
@@ -15,21 +15,59 @@ export const ProductBody = styled.div`
     }
 `;
 export const ProductButtons = styled.div`
-    height: 50px;
-    background: blue;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 `;
 
 export const ProductInfo = styled.div`
     flex: 1;
-    background: cyan;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
 `;
 
 export const Details = styled.div`
-
+    h1{
+        font-size: 2rem;
+        font-weight: 600;
+        
+    }
+    small{
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 1.2rem;
+    }
 
 `;
 export const Quantity = styled.div`
+    display: flex;
+    justify-content: space-between;
 
+    strong{
+        font-size: 2rem;
+        
+    }
+`;
 
+interface IPQuantity {
+    disable?: boolean
+}
+
+export const ProductQuantity = styled.div<IPQuantity>`
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+
+    p{
+        color: ${({ theme }) => theme.color.white};
+        margin: 0 10px;
+    }
+    svg{
+        color: ${({ theme }) => theme.color.white};
+        font-size: 2rem;
+        cursor: pointer;
+    }
 `;
