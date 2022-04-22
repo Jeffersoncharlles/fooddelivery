@@ -1,9 +1,16 @@
 import { ReactNode } from "react";
 
 export interface IStoreContext {
-    categories: ICategories[]
-    products: IProducts[]
-    ListProducts: () => Promise<void>
+    categories: ICategories[];
+    products: IProducts[];
+    ListProducts: () => Promise<void>;
+    isLoading: boolean;
+    totalPages: number;
+    currentPage: number;
+    setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+    setSearch: React.Dispatch<React.SetStateAction<string>>
+    search: string;
+    activeSearch: string;
 }
 
 export interface IStoreChildren {

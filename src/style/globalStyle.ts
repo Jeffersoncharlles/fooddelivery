@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased; //detalhes de font webkit
         -moz-osx-font-smoothing: grayscale !important;
         text-rendering: optimizeLegibility !important;
-        overflow-y: hidden;//nao tem rolagem vertical
+        /* overflow-y: hidden;//nao tem rolagem vertical */
         
     }
 

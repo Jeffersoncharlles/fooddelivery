@@ -8,6 +8,8 @@ import {
     CategoryList,
     Product,
     ProductList,
+    ProductPagination,
+    ProductPageItem,
 } from './styles';
 import { useStore } from '../../context/store';
 import { CardProducts } from '../../components/CardProducts';
@@ -23,8 +25,10 @@ const everyCategories = {
     image: 'GiNotebook',
 }
 
+
+
 export const Home = () => {
-    const { ListProducts, products } = useStore();
+    const { ListProducts, products, totalPages, currentPage, setCurrentPage, activeSearch } = useStore();
     const [categories, setCategories] = useState<ICategories[]>([])
     const [activeCategory, setActiveCategory] = useState(0)
 
@@ -43,7 +47,9 @@ export const Home = () => {
         (async () => {
             await ListProducts()
         })()
-    }, [activeCategory])
+    }, [activeCategory, currentPage, activeSearch])
+
+
 
     return (
         <Container>
@@ -67,7 +73,21 @@ export const Home = () => {
                     </ProductList>
                 </Product>
             )}
-
+            {totalPages > 0 && (
+                <ProductPagination >
+                    {//criar array com total de pages com conteúdo 0
+                        Array(totalPages).fill(0).map((item, index) => (
+                            <ProductPageItem
+                                key={String(index)}
+                                active={currentPage}
+                                current={index + 1}
+                                onClick={() => setCurrentPage(index + 1)}
+                            >
+                                {index + 1}
+                            </ProductPageItem>
+                        ))}
+                </ProductPagination>
+            )}
         </Container>
     );
 }

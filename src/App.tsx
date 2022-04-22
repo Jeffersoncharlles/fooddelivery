@@ -9,9 +9,10 @@ import { GlobalStyle } from "./style/globalStyle"
 import ReactTooltip from "react-tooltip"
 import dark from "./style/theme/dark"
 import light from "./style/theme/light"
+import { useStore } from "./context/store"
 
 function App() {
-  const [search, setSearch] = useState('')
+  const { search, setSearch } = useStore()
 
   return (
     <ThemeProvider theme={light}>

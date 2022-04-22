@@ -27,3 +27,24 @@ export const ProductList = styled.div`
     gap: 20px;
 
 `;
+
+export const ProductPagination = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+`;
+
+interface IPageProps {
+    active: number;
+    current?: number;
+}
+
+export const ProductPageItem = styled.div<IPageProps>`
+        cursor: pointer;
+        background: ${({ theme, active, current }) =>
+        active === current ? '#ffad8b' : theme.color.secondary2
+    };
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin: 0 5px;
+` 
