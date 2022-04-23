@@ -23,7 +23,7 @@ interface Product {
         price: number;
         ingredients: string;
         points: number;
-        quantity?: number;
+        quantity: number;
     }
 }
 
