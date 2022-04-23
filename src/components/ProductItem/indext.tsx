@@ -10,8 +10,11 @@ import {
     Quantity,
     ProductQuantity,
 } from './styles';
+import { useEffect, useState } from 'react';
+import { useCart } from '../../context/cart';
 
 interface Product {
+    close: React.Dispatch<React.SetStateAction<boolean>>;
     data: {
         id: number;
         id_cat: number;
@@ -20,10 +23,33 @@ interface Product {
         price: number;
         ingredients: string;
         points: number;
+        quantity?: number;
     }
 }
 
-export const ProductItem = ({ data }: Product) => {
+
+
+export const ProductItem = ({ data, close }: Product) => {
+    const { CreateCard, quantity, setQuantity } = useCart()
+
+
+
+    const handleRemoveQuantity = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1)
+        }
+    }
+
+    const handleAddToCart = async () => {
+        //step one get info
+        CreateCard({ product: data })
+        //closeModal
+        close(false)
+    }
+
+    useEffect(() => {
+        setQuantity(1)
+    }, [data])
 
     return (
         <Container>
@@ -36,17 +62,17 @@ export const ProductItem = ({ data }: Product) => {
                     </Details>
                     <Quantity>
                         <ProductQuantity>
-                            <MdRemoveCircleOutline />
-                            <p>2</p>
-                            <MdAddCircleOutline />
+                            <MdRemoveCircleOutline onClick={handleRemoveQuantity} />
+                            <small>{quantity}</small>
+                            <MdAddCircleOutline onClick={() => setQuantity(quantity + 1)} />
                         </ProductQuantity>
-                        <strong>{PriceFormatted(data.price)}</strong>
+                        <strong>{PriceFormatted(data.price * quantity)}</strong>
                     </Quantity>
                 </ProductInfo>
             </ProductBody>
             <ProductButtons>
-                <Button title='Cancelar' small />
-                <Button title='Adicionar ao Carrinho' />
+                <Button title='Cancelar' small onClick={() => close(false)} />
+                <Button title='Adicionar ao Carrinho' onClick={handleAddToCart} />
             </ProductButtons>
         </Container>
     );

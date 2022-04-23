@@ -45,7 +45,7 @@ export const Details = styled.div`
 export const Quantity = styled.div`
     display: flex;
     justify-content: space-between;
-
+    
     strong{
         font-size: 2rem;
         
@@ -60,14 +60,17 @@ export const ProductQuantity = styled.div<IPQuantity>`
     font-size: 2rem;
     display: flex;
     align-items: center;
+    
 
-    p{
+    small{
         color: ${({ theme }) => theme.color.white};
-        margin: 0 10px;
+        margin: 0 15px;
+        cursor: not-allowed;
     }
     svg{
         color: ${({ theme }) => theme.color.white};
-        font-size: 2rem;
+        font-size: 2.5rem;
+        /* padding: 10px 20px; */
         cursor: pointer;
     }
 `;

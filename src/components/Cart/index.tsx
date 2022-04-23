@@ -1,4 +1,6 @@
-import { BiCart } from 'react-icons/bi'
+import { useState } from 'react';
+import { BiCart, BiChevronDown } from 'react-icons/bi'
+import { useCart } from '../../context/cart';
 
 import {
     Container,
@@ -7,14 +9,19 @@ import {
 } from './styles';
 
 export const Cart = () => {
+    const { products } = useCart();
+    const [show, setShow] = useState(false)
 
     return (
         <Container>
-            <CartHeader>
+            <CartHeader onClick={() => setShow(!show)}>
                 <BiCart size={24} />
-                <strong>Meu Carrinho (x)</strong>
+                <strong>Meu Carrinho ({products.length})</strong>
+                {show && (
+                    <BiChevronDown size={32} />
+                )}
             </CartHeader>
-            <CartBody>
+            <CartBody show={show}>
 
             </CartBody>
         </Container>

@@ -122,6 +122,7 @@ export const Home = () => {
                 <ProductItem
                     // passando as info para ca
                     data={modalData}
+                    close={setModalStatus}
                 />
             </Modal>
         </Container>

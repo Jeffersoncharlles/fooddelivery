@@ -32,20 +32,23 @@ export const ProductInfo = styled.div`
     flex: 1;
     margin-left: 10px;
     margin-right: 10px;
+    
 
     strong{
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: 600;
+        margin-bottom: 10px;
     }
 
     small{
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 500;
         opacity: 0.8;
+        margin-bottom: 10px;
     }
 
     p{
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: ${({ theme }) => theme.color.secondary2};
         opacity: 0.5;
     }

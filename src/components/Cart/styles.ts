@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.main`
     background: ${({ theme }) => theme.color.secondary2};
     border-top-left-radius:10px;
     border-top-right-radius:10px;
@@ -20,7 +20,7 @@ export const CartHeader = styled.header`
     transition: ease-in all .3s;
 
     svg{
-
+        margin-left: 10px;
     }
     strong{
         font-size: 1.2rem;
@@ -33,7 +33,12 @@ export const CartHeader = styled.header`
     }
 
 `;
-export const CartBody = styled.main`
 
+interface ICardBody {
+    show: boolean
+}
+
+export const CartBody = styled.section<ICardBody>`
+    display: ${({ show }) => show ? 'block' : 'none'};
 
 `;
