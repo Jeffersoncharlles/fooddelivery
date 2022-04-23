@@ -16,7 +16,7 @@ import {
 
 export const Cart = () => {
     const { products, ChangeProduct } = useCart();
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false)
 
     const handleProductChange = (id: number, action: string) => {
         ChangeProduct({ id, action })
