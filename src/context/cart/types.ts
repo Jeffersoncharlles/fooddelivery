@@ -8,8 +8,9 @@ export interface ICardContext {
     setQuantity: React.Dispatch<React.SetStateAction<number>>,
     quantity: number;
     isLoading: boolean
-    CreateCard: ({ product }: ICreateCard) => void
+    CreateCart: ({ product }: ICreateCard) => void
     products: IProducts[]
+    ChangeProduct: ({ id, action }: IChangeProduct) => void
 }
 
 export interface ICard {
@@ -27,9 +28,14 @@ export interface IProducts {
     price: number;
     ingredients: string;
     points: number;
-    quantity?: number;
+    quantity: number;
 }
 
 export interface ICreateCard {
     product: IProducts
+}
+
+export interface IChangeProduct {
+    id: number;
+    action: string;
 }

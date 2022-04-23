@@ -30,7 +30,7 @@ interface Product {
 
 
 export const ProductItem = ({ data, close }: Product) => {
-    const { CreateCard, quantity, setQuantity } = useCart()
+    const { CreateCart, quantity, setQuantity } = useCart()
 
 
 
@@ -42,7 +42,7 @@ export const ProductItem = ({ data, close }: Product) => {
 
     const handleAddToCart = async () => {
         //step one get info
-        CreateCard({ product: data })
+        CreateCart({ product: data })
         //closeModal
         close(false)
     }

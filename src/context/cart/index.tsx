@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { ICard, ICardChildren, ICardContext, ICreateCard, IProducts } from "./types";
+import { ICard, ICardChildren, ICardContext, IChangeProduct, ICreateCard, IProducts } from "./types";
 
 
 
@@ -17,10 +17,12 @@ export const CartProvider = ({ children }: ICardChildren) => {
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
+        // get localStore
         VerifyCart()
     }, [])
 
     useEffect(() => {
+        //verificar se e maior que 0
         if (products.length > 0) {
             storageSave()
         }
@@ -30,44 +32,46 @@ export const CartProvider = ({ children }: ICardChildren) => {
         const storageCard = localStorage.getItem('@cartFoodDelivery');
         if (storageCard) {
             const Carts = JSON.parse(storageCard)
-            setCart(Carts);
-            setProducts(Carts.products)
+            setCart(Carts);// salvar card
+            setProducts(Carts.products) //salvar novo estado com os dados que ta salvo 
             setIsLoading(false)
 
         }
         setIsLoading(false)
     }
-    const CreateBuy = async () => {
-        try {
 
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const CreateCard = async ({ product }: ICreateCard) => {
+    const CreateCart = async ({ product }: ICreateCard) => {
         const newProduct = [...products]
         const ExistsProducts = newProduct.findIndex(p => p.id === product.id)//procurar pelo mesmo produto   
         if (ExistsProducts > -1) {
             const qt = products[ExistsProducts].quantity += quantity as any
             setProducts(newProduct)
             setQuantity(qt)
-
         } else {
             newProduct.push({
                 ...product,
                 quantity
             })
             setProducts(newProduct)
-
         }
-
-
     }
 
-    const RemoveCard = async ({ productItem }: any) => {
+    const ChangeProduct = ({ id, action }: IChangeProduct) => {
+        let newProduct = [...products]
 
+        if (newProduct[id]) {
+            if (action === '-') {
+                newProduct[id].quantity--;
+                if (newProduct[id].quantity <= 0) {
+                    newProduct = newProduct.filter((item, index) => item.id !== id)
+                }
+            } else {
+                newProduct[id].quantity++
+            }
+        }
+        setProducts(newProduct)
     }
+
 
     const storageSave = () => {
         const schema = {
@@ -82,7 +86,7 @@ export const CartProvider = ({ children }: ICardChildren) => {
         <CartContext.Provider
             value={{
                 isLoading, products, quantity,
-                CreateCard, setQuantity
+                CreateCart, setQuantity, ChangeProduct
             }}>
             {children}
         </CartContext.Provider>

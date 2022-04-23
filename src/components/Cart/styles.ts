@@ -42,3 +42,47 @@ export const CartBody = styled.section<ICardBody>`
     display: ${({ show }) => show ? 'block' : 'none'};
 
 `;
+
+export const ProductsContainer = styled.div`
+
+    
+`;
+export const ProductItem = styled.div`
+    display: flex;
+    margin: 15px;
+
+    img{
+        width: 64px;
+        height: auto;
+        border-radius: 7px;
+    }
+
+`;
+export const ProductInfoContainer = styled.div`
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    strong{
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    p{
+        font-size: 1.1rem;
+    }
+
+`;
+export const ProductQuantity = styled.div`
+    display: flex;
+    align-items: center;
+    small{
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin: 0px 5px;
+    }
+    svg{
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+`;
