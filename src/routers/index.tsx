@@ -10,9 +10,9 @@ export const Routers = () => {
 
     return (
         <Routes>
-            <Route caseSensitive path="/" element={<Home />} />
-            <Route caseSensitive path="/orders" element={<Orders />} />
-            <Route caseSensitive path="/profile" element={
+            <Route caseSensitive path="/fooddelivery/" element={<Home />} />
+            <Route caseSensitive path="/fooddelivery/orders" element={<Orders />} />
+            <Route caseSensitive path="/fooddelivery/profile" element={
                 <RequireAuth>
                     <Profile />
                 </RequireAuth>
